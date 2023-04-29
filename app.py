@@ -40,16 +40,17 @@ if "vmw_fall_price" not in st.session_state:
 vmw_fall_url = "https://seekingalpha.com/news/3957771-vmware-potential-deal-price-break-raised-to-115-from-100-at-ubs"
 current_value = st.session_state.total_vmw_shares * st.session_state.vmw_cur_price
 potential_value = (st.session_state.total_vmw_shares *
-                   (st.session_state.percent_cash*.01) *
+                   (st.session_state.percent_cash * .01) *
                    142.5) + (st.session_state.total_vmw_shares *
-                             (st.session_state.percent_stock*.01) *
+                             (st.session_state.percent_stock * .01) *
                              (st.session_state.avgo_cur_price * 0.252))
 potential_gain = potential_value - current_value
 potential_gain_percent = potential_gain / current_value
-avgo_break_even_price = (
-    current_value -
-    (st.session_state.total_vmw_shares * (st.session_state.percent_cash*.01) * 142.5)
-) / (st.session_state.total_vmw_shares * (st.session_state.percent_stock*.01) * 0.252)
+avgo_break_even_price = (current_value -
+                         (st.session_state.total_vmw_shares *
+                          (st.session_state.percent_cash * .01) * 142.5)) / (
+                              st.session_state.total_vmw_shares *
+                              (st.session_state.percent_stock * .01) * 0.252)
 deal_fails_value = st.session_state.total_vmw_shares * st.session_state.vmw_fall_price
 loss_vs_current = current_value - deal_fails_value
 loss_vs_current_percent = loss_vs_current / current_value
@@ -78,13 +79,11 @@ with col2:
         )
         st.divider()
         # st.warning("These probably won't change")
-        percent_cash_input = st.number_input(
-            "% cash:",
-            key="percent_cash",
-            min_value=1,
-            max_value=100,
-            format='%d'
-        )
+        percent_cash_input = st.number_input("% cash:",
+                                             key="percent_cash",
+                                             min_value=1,
+                                             max_value=100,
+                                             format='%d')
         percent_stock_input = st.number_input(
             "% stock:",
             key="percent_stock",
@@ -101,7 +100,7 @@ with col2:
         if submitted:
             if (percent_cash_input + percent_stock_input) != 100:
                 st.error('% stock and % cash must equal 100')
-
+                st.stop()
 
 with col3:
     # Prefer tabular layout, but no real way to get rid of headers and can't use tooltips
@@ -135,3 +134,8 @@ with col3:
     st.markdown(f"""Loss vs. current:  
 `${loss_vs_current:,.2f}` (`{loss_vs_current_percent:.2%}`)""",
                 help="Difference between current value and value if deal fails")
+
+# Doesn't seem to be an easy way to center things, so use HTML
+st.write(
+    '<p style="text-align: center;"><a href="https://github.com/jessejoe/vmw-avgo-calculator">Source</a></p>',
+    unsafe_allow_html=True)
