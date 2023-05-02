@@ -80,7 +80,7 @@ col1, col2 = st.columns([2, 1])
 
 with col1:
     with st.form(key="my_form"):
-        subcol1, subcol2 = st.columns([1,1])
+        subcol1, subcol2 = st.columns([1, 1])
         with subcol1:
             st.number_input(
                 "Total VMW shares:",
@@ -100,20 +100,26 @@ with col1:
                 step=1.0,
             )
         with subcol2:
+            st.number_input(
+                f"[VMW price if deal falls through]({vmw_fall_url}):",
+                key="vmw_fall_price",
+                min_value=0.01,
+                step=1.0,
+            )
             percent_cash_input = st.number_input(
-                "% cash:", key="percent_cash", min_value=1, max_value=100, format="%d"
+                "% cash:",
+                key="percent_cash",
+                min_value=1,
+                max_value=100,
+                format="%d",
+                help="Likely won't change",
             )
             percent_stock_input = st.number_input(
                 "% stock:",
                 key="percent_stock",
                 min_value=1,
                 max_value=100,
-            )
-            st.number_input(
-                f"[VMW price if deal falls through]({vmw_fall_url}):",
-                key="vmw_fall_price",
-                min_value=0.01,
-                step=1.0,
+                help="Likely won't change",
             )
 
         submitted = st.form_submit_button(label="Submit", use_container_width=True)
