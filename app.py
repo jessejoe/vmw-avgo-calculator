@@ -2,8 +2,17 @@ import requests
 import streamlit as st
 import pandas as pd
 
+st.set_page_config(page_title="VMW/AVGO Calculator")
+# Remove top padding
+st.markdown(
+    f'''
+    <style>
+        .block-container {{
+            padding-top: 0px;
+        }}
+</style>''', unsafe_allow_html=True)
 
-@st.cache_data
+@st.cache_data(ttl=300)
 def get_current_price(stock):
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{stock}"
     headers = {"User-Agent": "testing"}
@@ -59,6 +68,10 @@ loss_vs_current = current_value - deal_fails_value
 loss_vs_current_percent = loss_vs_current / current_value
 
 ## Layout and display elements
+with st.container():
+    st.info('Broadcom is acquiring VMWare, this calculator helps determine the risks of holding VMW stock until '
+            'after the deal closes vs. selling now')
+    
 col1, col2, col3, col4 = st.columns([1, 2, 2, 1])
 
 with col2:
