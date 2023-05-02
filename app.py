@@ -3,14 +3,16 @@ import streamlit as st
 import pandas as pd
 
 
+@st.cache_data
 def get_current_price(stock):
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{stock}"
     headers = {"User-Agent": "testing"}
     response = requests.get(url, headers=headers)
     response.raise_for_status()
     data = response.json()
-    current = data["chart"]["result"][0]["meta"]["regularMarketPrice"]
-    return current
+    current_price = data["chart"]["result"][0]["meta"]["regularMarketPrice"]
+    print(f'Fetched price for {stock}: {current_price}')
+    return current_price
 
 
 # Hide the Streamlit menu - https://docs.streamlit.io/knowledge-base/using-streamlit/how-hide-hamburger-menu-app
