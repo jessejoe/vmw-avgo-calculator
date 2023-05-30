@@ -75,6 +75,7 @@ with st.container():
         "[Broadcom is acquiring VMWare](https://www.broadcom.com/company/news/financial-releases/60271) - this calculator helps determine the risks of holding VMW stock until "
         "after the deal closes, vs. selling now"
     )
+    st.success(f"Existing VMware shares should be worth {potential_gain_percent:.2%} more after deal closes")
 
 col1, col2 = st.columns([2, 1])
 
