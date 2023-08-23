@@ -110,7 +110,7 @@ with col1:
             percent_cash_input = st.number_input(
                 "% cash:",
                 key="percent_cash",
-                min_value=1,
+                min_value=0,
                 max_value=100,
                 format="%d",
                 help="Likely won't change",
@@ -118,7 +118,7 @@ with col1:
             percent_stock_input = st.number_input(
                 "% stock:",
                 key="percent_stock",
-                min_value=1,
+                min_value=0,
                 max_value=100,
                 help="Likely won't change",
             )
