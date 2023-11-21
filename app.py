@@ -37,9 +37,9 @@ if "vmw_cur_price" not in st.session_state:
 if "avgo_cur_price" not in st.session_state:
     st.session_state.avgo_cur_price = get_current_price("AVGO")
 if "percent_cash" not in st.session_state:
-    st.session_state.percent_cash = 50
+    st.session_state.percent_cash = 49
 if "percent_stock" not in st.session_state:
-    st.session_state.percent_stock = 50
+    st.session_state.percent_stock = 51
 if "vmw_fall_price" not in st.session_state:
     st.session_state.vmw_fall_price = 115.0
 
@@ -110,16 +110,12 @@ with col1:
             percent_cash_input = st.number_input(
                 "% cash:",
                 key="percent_cash",
-                min_value=0,
-                max_value=47.9,
                 format="%d",
                 help="Final per https://www.broadcom.com/company/news/financial-releases/61501",
             )
             percent_stock_input = st.number_input(
                 "% stock:",
                 key="percent_stock",
-                min_value=0,
-                max_value=52.1,
                 help="Final per https://www.broadcom.com/company/news/financial-releases/61501",
             )
 
