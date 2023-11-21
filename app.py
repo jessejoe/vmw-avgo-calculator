@@ -116,6 +116,7 @@ with col1:
             percent_stock_input = st.number_input(
                 "% stock:",
                 key="percent_stock",
+                format="%d",
                 help="Final per https://www.broadcom.com/company/news/financial-releases/61501",
             )
 
