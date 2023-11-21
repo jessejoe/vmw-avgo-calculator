@@ -37,9 +37,9 @@ if "vmw_cur_price" not in st.session_state:
 if "avgo_cur_price" not in st.session_state:
     st.session_state.avgo_cur_price = get_current_price("AVGO")
 if "percent_cash" not in st.session_state:
-    st.session_state.percent_cash = 49
+    st.session_state.percent_cash = 47.9
 if "percent_stock" not in st.session_state:
-    st.session_state.percent_stock = 51
+    st.session_state.percent_stock = 52.1
 if "vmw_fall_price" not in st.session_state:
     st.session_state.vmw_fall_price = 115.0
 
