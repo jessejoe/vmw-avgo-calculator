@@ -111,16 +111,16 @@ with col1:
                 "% cash:",
                 key="percent_cash",
                 min_value=0,
-                max_value=100,
+                max_value=47.9,
                 format="%d",
-                help="Likely won't change",
+                help="Final per https://www.broadcom.com/company/news/financial-releases/61501",
             )
             percent_stock_input = st.number_input(
                 "% stock:",
                 key="percent_stock",
                 min_value=0,
-                max_value=100,
-                help="Likely won't change",
+                max_value=52.1,
+                help="Final per https://www.broadcom.com/company/news/financial-releases/61501",
             )
 
         submitted = st.form_submit_button(label="Submit", use_container_width=True)
