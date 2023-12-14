@@ -33,7 +33,7 @@ def get_current_price(stock):
 if "total_vmw_shares" not in st.session_state:
     st.session_state.total_vmw_shares = 165
 if "vmw_cur_price" not in st.session_state:
-    st.session_state.vmw_cur_price = get_current_price("VMW")
+    st.session_state.vmw_cur_price = 142.48
 if "avgo_cur_price" not in st.session_state:
     st.session_state.avgo_cur_price = get_current_price("AVGO")
 if "percent_cash" not in st.session_state:
@@ -91,8 +91,8 @@ with col1:
             st.number_input(
                 "Current VMW price:",
                 key="vmw_cur_price",
-                min_value=0.01,
-                step=1.0,
+                disabled=True,
+                help="Final closing price",
             )
             st.number_input(
                 "Current AVGO price:",
